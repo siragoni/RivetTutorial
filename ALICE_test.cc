@@ -65,7 +65,7 @@ namespace Rivet {
 
     /// @name Histograms
     //@{
-    Histo1DPtr _h_XXXX, _h_YYYY, _h_ZZZZ;
+    Histo1DPtr _h_XXXX, _h_YYYY, _h_ZZZZ, _h_pt;
     Profile1DPtr _p_AAAA;
     CounterPtr _c_BBBB;
     //@}
