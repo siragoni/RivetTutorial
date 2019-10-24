@@ -22,12 +22,16 @@ namespace Rivet {
 
       // Initialise and register projections
       // declare(FinalState(Cuts::abseta < 5 && Cuts::pT > 100*MeV), "FS");
+
+      /// "FS" is the name of our projection
       declare(FinalState(Cuts::abseta < 0.8 && Cuts::pT < 10*GeV), "FS");
 
       // Book histograms
       _h_XXXX = bookHisto1D(1, 1, 1);
       _p_AAAA = bookProfile1D(2, 1, 1);
       _c_BBBB = bookCounter(3, 1, 1);
+
+      _h_pt = bookHisto1D("histpt", 10, 0., 10.);
 
     }
 
@@ -36,6 +40,13 @@ namespace Rivet {
     void analyze(const Event& event) {
 
       /// @todo Do the event by event analysis here
+      /// event is the param of the function which refers to the projection "FS"
+      const FinalState &fs = applyProjection<FinalState>(event, "FS");
+      foreach ( const Particle &p, fs.particles() ) {
+        double pt = p.pT();
+        _h_pt->fill( pt / GeV, event.weight() );
+      }
+
 
     }
 
@@ -43,8 +54,9 @@ namespace Rivet {
     /// Normalise histograms etc., after the run
     void finalize() {
 
-      normalize(_h_YYYY); // normalize to unity
-      scale(_h_ZZZZ, crossSection()/picobarn/sumOfWeights()); // norm to cross section
+      // normalize(_h_YYYY); // normalize to unity
+      // scale(_h_ZZZZ, crossSection()/picobarn/sumOfWeights()); // norm to cross section
+      scale( _h_pt, 1./sumOfWeights() );
 
     }
 
