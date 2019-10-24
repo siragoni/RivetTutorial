@@ -21,7 +21,8 @@ namespace Rivet {
     void init() {
 
       // Initialise and register projections
-      declare(FinalState(Cuts::abseta < 5 && Cuts::pT > 100*MeV), "FS");
+      // declare(FinalState(Cuts::abseta < 5 && Cuts::pT > 100*MeV), "FS");
+      declare(FinalState(Cuts::abseta < 0.8 && Cuts::pT < 10*GeV), "FS");
 
       // Book histograms
       _h_XXXX = bookHisto1D(1, 1, 1);
