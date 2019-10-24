@@ -27,9 +27,9 @@ namespace Rivet {
       declare(FinalState(Cuts::abseta < 0.8 && Cuts::pT < 10*GeV), "FS");
 
       // Book histograms
-      _h_XXXX = bookHisto1D(1, 1, 1);
-      _p_AAAA = bookProfile1D(2, 1, 1);
-      _c_BBBB = bookCounter(3, 1, 1);
+      //_h_XXXX = bookHisto1D(1, 1, 1);
+      //_p_AAAA = bookProfile1D(2, 1, 1);
+      //_c_BBBB = bookCounter(3, 1, 1);
 
       _h_pt = bookHisto1D("histpt", 10, 0., 10.);
 
@@ -65,9 +65,9 @@ namespace Rivet {
 
     /// @name Histograms
     //@{
-    Histo1DPtr _h_XXXX, _h_YYYY, _h_ZZZZ, _h_pt;
-    Profile1DPtr _p_AAAA;
-    CounterPtr _c_BBBB;
+    Histo1DPtr /*_h_XXXX, _h_YYYY, _h_ZZZZ,*/ _h_pt;
+    // Profile1DPtr _p_AAAA;
+    // CounterPtr _c_BBBB;
     //@}
 
 
